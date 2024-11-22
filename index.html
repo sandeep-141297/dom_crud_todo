@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            /* background-color: black; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>
+            Simple DOM Crud Todo Application
+        </h1>
+        <div class="inputSection">
+            <input type="text" id="getinputvalue">
+            <button class="add">Add Me</button>
+            <div id="todoText">
+                <!-- <p></p> -->
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        let inputValue = document.getElementById("getinputvalue");
+        // console.log(inputValue);
+        let addMe = document.querySelector(".add");
+        // console.log(addMe);
+        let todoText = document.getElementById("todoText");
+
+        const addTodoItem = () => {
+            console.log(inputValue.value);
+            // todoText.textContent = inputValue.value;
+            let pElemCreate = document.createElement("p");
+            pElemCreate.textContent = inputValue.value;
+            console.log(pElemCreate);
+            todoText.append(pElemCreate);
+            inputValue.value = "";
+        }
+
+        addMe.addEventListener('click', () => {
+            addTodoItem();
+        });
+
+        todoText.addEventListener("click", (event) => {
+            console.log(event.target);
+            currElem = event.target;
+            currElem.remove();
+        });
+        
+    </script>
+</body>
+</html>
